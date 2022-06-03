@@ -1,5 +1,5 @@
-resource "aws_security_group" "allow-ssh" {
-    name        = "allow_ssh"
+resource "aws_security_group" "allow-jenkins-ssh" {
+    name        = "allow_jenkins_ssh"
     description = "Allow SSH inbound traffic"
     #vpc_id = aws_vpc.main.id  
   
@@ -21,13 +21,13 @@ resource "aws_security_group" "allow-ssh" {
     }
 
     tags = {
-      "Name" = "allow-ssh"
+      "Name" = "allow-jenkins-ssh"
     }
 }
 
 
-resource "aws_security_group" "allow-web" {
-    name        = "allow_web"
+resource "aws_security_group" "allow-jenkins-web" {
+    name        = "allow_jenkins_web"
     description = "Allow Web inbound traffic on 8080"
     #vpc_id = aws_vpc.main.id  
   

@@ -16,3 +16,8 @@ variable "my-instance-type" {
     type = list
     default = ["t2.micro", "t2.medium"]
 }
+
+variable "my-key-pem" {
+    type = string
+    default = "terraform"
+}
