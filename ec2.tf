@@ -1,6 +1,7 @@
 resource "aws_instance" "jenkins" {
     ami = var.my-ami-list["RHEL"]
     instance_type = var.my-instance-type[0]
+    user_data = file("${path.module}/install-jenkins.sh")
 
     vpc_security_group_ids = [aws_security_group.allow-ssh.id, aws_security_group.allow-web.id]
 
