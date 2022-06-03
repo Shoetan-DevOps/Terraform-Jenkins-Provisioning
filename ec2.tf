@@ -1,6 +1,6 @@
 resource "aws_instance" "jenkins" {
     ami = var.my-ami-list["RHEL"]
-    instance_type = var.my-instance-list[0]
+    instance_type = var.my-instance-type[0]
 
     #security_groups = 
 
