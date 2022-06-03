@@ -1,5 +1,12 @@
 #! /bin/bash
 # Script to install Jenkins 
+<<ml
+     Hige level Steps
+     1) install depedndencies - wget, java jdk, git
+     2) import jenkins key & install jenkins repo
+     3) install jenkins
+     4)
+ml
 
 # errors & logs
 sudo touch /home/ec2-user/errors.txt
@@ -17,7 +24,17 @@ sudo yum install jdk-8u131-linux-x64.rpm -y
 
 # Step 3: Import Jenkins key & Install jenkins repo in yum repo
 sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
-echo "rpm ${$?}" >> /home/ec2-user/errors.txt
+if [$? != 0]
+  then
+  echo "error" > /home/ec2-user/errors.txt
+fi
 cd /etc/yum.repos.d/
 sudo curl -O https://pkg.jenkins.io/redhat-stable/jenkins.repo 
+
+# Step 4:  install Jenkins
+sudo yum install -y jenkins --nobest
+
+# Step 5: Start & enable Jenkins service
+sudo systemctl start jenkins
+sudo systemctl enable jenkins
 

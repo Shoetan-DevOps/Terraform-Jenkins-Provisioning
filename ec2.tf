@@ -1,7 +1,8 @@
 resource "aws_instance" "jenkins" {
     ami = var.my-ami-list["RHEL"]
-    instance_type = var.my-instance-type[0]
+    instance_type = var.my-instance-type[1]
     user_data = file("${path.module}/install-jenkins.sh")
+    key_name = "terraform"
 
     vpc_security_group_ids = [aws_security_group.allow-ssh.id, aws_security_group.allow-web.id]
 
